@@ -1,0 +1,13 @@
+%h1
+  = @question.title
+%p
+  = @question.body
+
+%ul
+  - if @question.answers.any?
+    - @question.answers.each do |a|
+      %li
+        = a.body
+
+%h3 Answer this question
+= render 'answers/answer_form'
