@@ -1,0 +1,9 @@
+%li
+  = comment.body
+  = render partial: 'comments/reply_form', object: @comment, locals: {reply: comment, answer: comment.answer}
+
+  - if has_replies?(comment)
+    - comment.replies.each do |re|
+      %ul
+        %li
+          = re.body

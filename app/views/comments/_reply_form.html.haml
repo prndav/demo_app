@@ -1,0 +1,6 @@
+= simple_form_for @comment, url: { controller: 'comments', action: 'create_reply' } do |f|
+  = render 'shared/form_errors', object: f.object
+  = f.hidden_field :answer_id, value: answer.id
+  = f.hidden_field :reply_id, value: reply.id
+  = f.text_area :body
+  = f.submit 'Submit'

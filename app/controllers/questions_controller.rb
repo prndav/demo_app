@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
   def index
-    @questions = Question.all
+    @questions = Question.all.paginate(page: params[:page], per_page: 5)
     @question = Question.new
   end
 
@@ -12,15 +12,17 @@ class QuestionsController < ApplicationController
 
     if @question.save
       flash[:success] = 'Your question was posted.'
-      redirect_to :back
+      redirect_to @question
     else
-      render 'new'
+      @questions = Question.all.paginate(page: params[:page], per_page: 5)
+      render 'index'
     end
   end
 
   def show
     @question = Question.find(params[:id])
     @answer = Answer.new
+    @comment = Comment.new
   end
 
   private

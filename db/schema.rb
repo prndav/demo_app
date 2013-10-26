@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131025113505) do
+ActiveRecord::Schema.define(version: 20131026132339) do
 
   create_table "answers", force: true do |t|
     t.text     "body"
@@ -21,6 +21,25 @@ ActiveRecord::Schema.define(version: 20131025113505) do
   end
 
   add_index "answers", ["question_id"], name: "index_answers_on_question_id"
+
+  create_table "commentables", force: true do |t|
+    t.integer  "comment_id"
+    t.integer  "reply_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "commentables", ["comment_id"], name: "index_commentables_on_comment_id"
+  add_index "commentables", ["reply_id"], name: "index_commentables_on_reply_id"
+
+  create_table "comments", force: true do |t|
+    t.text     "body"
+    t.integer  "answer_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "comments", ["answer_id"], name: "index_comments_on_answer_id"
 
   create_table "questions", force: true do |t|
     t.string   "title"
