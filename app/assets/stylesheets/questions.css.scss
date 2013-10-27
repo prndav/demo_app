@@ -3,3 +3,60 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 @import 'bootstrap';
+
+
+.controls {
+  margin-left: 0px!important;
+}
+
+#question_title {
+  width: 330px;
+}
+
+.question-form {
+  border-radius: 10px;
+}
+
+.question-list {
+
+
+  .question {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-bottom: 2px dotted gray;
+
+    .question-date {
+      font-size: small;
+      color: grey;
+    }
+
+    .question-title {
+      font-size: 20px;
+      margin-bottom: 5px;
+    }
+
+    .question-info {
+      font-size: small;
+      color: #F2575F;
+    }
+
+  }
+
+}
+
+.full-question {
+
+  .date {
+    text-transform: uppercase;
+    font-size: small;
+    color: gray;
+    margin-bottom: 20px;
+  }
+
+  .question-body {
+    word-break:break-all;
+    font-size: 18px;
+  }
+
+}
+

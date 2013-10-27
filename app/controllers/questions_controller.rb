@@ -2,6 +2,7 @@ class QuestionsController < ApplicationController
   def index
     @questions = Question.all.paginate(page: params[:page], per_page: 5)
     @question = Question.new
+
   end
 
   def new
@@ -30,4 +31,5 @@ class QuestionsController < ApplicationController
     def question_params
       params.require(:question).permit(:title, :body)
     end
+
 end

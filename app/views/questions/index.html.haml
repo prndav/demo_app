@@ -1,15 +1,18 @@
 .row
   .span8
-    %h1 Ask a question
-    = render 'question_form'
+    .question-form
+      = render 'question_form'
+    .row
+      .span5
+        .question-list
+          %h2 List of all questions
+          - if @questions.any?
+            = render @questions
+          - else
+            .block-notice
+              No questions have been posted yet.
+          = will_paginate @questions
 
-    %h1 All questions
-    - if @questions.any?
-      = render @questions
-    - else
-      %h3 No questions have been posted yet.
-    = will_paginate @questions
-  .span4
-    %h1 Temporary placeholder
+
 
 

@@ -1,5 +1,15 @@
-= simple_form_for @question do |f|
+%h1 Question form
+%hr
+= simple_form_for( @question, html: { class: 'form-horizontal' } ) do |f|
   = render 'shared/form_errors', object: f.object
-  = f.input :title
-  = f.text_area :body
-  = f.submit 'Submit'
+  = f.input :title, wrapper: :prepend, label: false do
+    = content_tag :span, 'Title', class: 'add-on'
+    = f.input_field :title
+  = f.input :body, input_html: { class: 'span5', rows: '5' }, label: false
+  .control-group
+    .controls
+      = f.button :submit, class: 'btn-primary'
+      = submit_tag 'Cancel', type: :reset, class: 'btn btn-danger'
+%hr
+
+

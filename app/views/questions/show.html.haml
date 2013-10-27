@@ -1,15 +1,22 @@
-%h1
-  = @question.title
-%p
-  = @question.body
+.row
+  .span10
+    .full-question
+      %h2
+        = @question.title
+      .date
+        = @question.created_at.to_formatted_s(:long)
+      .question-body
+        = @question.body
 
-%h3 Answer this question
-= render 'answers/answer_form'
+      .answer-form
+        = render 'answers/answer_form'
 
-%ul
-  - if has_answers?(@question)
-    = render @question.answers
-  - else
-    %h3 Be firstone .
+      %div
+        - if has_answers?(@question)
+          .answers
+            = render @question.answers
+        - else
+          .block-notice
+            Noone has answered this question yet.
 
 

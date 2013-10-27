@@ -1,0 +1,2 @@
+$('.reply-form').css('display', 'none').append("<%= escape_javascript render partial: 'comments/reply_form', object: @comment, locals: { reply: @reply_to, answer: @answer } %>").slideDown('200');
+

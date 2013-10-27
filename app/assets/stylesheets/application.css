@@ -12,3 +12,13 @@
  *= require_tree .
  */
 
+@import 'bootstrap';
+
+body {
+  padding: 50px;
+}
+
+.block-notice {
+  font-size: 20px;
+  color: gray;
+}
