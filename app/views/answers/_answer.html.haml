@@ -5,10 +5,11 @@
     %p
       = answer.body
       = link_to 'leave comment', { controller: 'comments', action: 'new_comment', id: answer }, class: 'comment-link', remote: true
+      %span.hide-comments show_comments
     .comments
       - render_comments_for(answer) do |comment|
-        .comment
-          %p.comment-content{ style: "margin-left: #{comment.l_margin}px" }
+        .comment{ style: "margin-left: #{comment.l_margin}px" }
+          %p.comment-content
             = comment.body
-            = link_to 'reply', { controller: 'comments', action: 'new_reply', id: comment }, class: 'reply-link', remote: true
+          = link_to 'reply', { controller: 'comments', action: 'new_reply', id: comment }, class: 'reply-link', remote: true
 

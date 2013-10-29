@@ -2,6 +2,7 @@
   = render 'shared/form_errors', object: f.object
   = f.hidden_field :answer_id, value: answer.id
   = f.hidden_field :reply_id, value: reply.id
+  = f.hidden_field :user_id, value: current_user.id
   = f.hidden_field :l_margin, value: reply.l_margin + 20
   = f.input :body, input_html: { class: 'span5', rows: '5' }, label: false
   .control-group

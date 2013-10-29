@@ -12,10 +12,15 @@
   <div class="navbar navbar-fixed-top navbar-inverse">
     <div class="navbar-inner">
       <ul class="nav pull-right">
-        <li><a href="#">Link</a></li>
-        <li><a href="#">Link</a></li>
-        <li><a href="#">Link</a></li>
-        <li><a href="#">Link</a></li>
+        <% unless current_user %>
+
+          <li><%= link_to 'Sign up', new_user_registration_path %></li>
+          <li><%= link_to 'Sign in', new_user_session_path %></li>
+        <% end %>
+        <% if current_user %>
+          <li><%= link_to 'Home', root_path %></li>
+          <li><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></li>
+        <% end %>
       </ul>
     </div>
   </div>

@@ -1,4 +1,6 @@
 class AnswersController < ApplicationController
+  before_filter :authenticate_user!, only: [:create]
+
   def create
     @question = Question.find(params[:question_id])
     @answer = @question.answers.build(answer_params)
@@ -15,6 +17,6 @@ class AnswersController < ApplicationController
   private
 
     def answer_params
-      params.require(:answer).permit(:body)
+      params.require(:answer).permit(:body, :user_id)
     end
 end

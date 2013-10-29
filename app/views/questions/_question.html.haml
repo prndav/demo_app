@@ -9,4 +9,6 @@
     %span
       posted on:
       = question.created_at.to_formatted_s(:long)
-      by ...
+      by
+      %span.user-name
+        = question.user.user_name

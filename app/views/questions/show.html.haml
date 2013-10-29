@@ -7,6 +7,9 @@
         = @question.created_at.to_formatted_s(:long)
       .question-body
         = @question.body
+      .question-author
+        posted by -
+        = @question.user.user_name
 
       .answer-form
         = render 'answers/answer_form'

@@ -23,11 +23,18 @@
   .question {
     padding: 10px;
     margin-bottom: 10px;
-    border-bottom: 2px dotted gray;
+    border-bottom: 1px dotted gray;
 
     .question-date {
       font-size: small;
       color: grey;
+
+      .user-name {
+        text-decoration: underline;
+        font-size: 14px;
+        font-weight: bold;
+      }
+
     }
 
     .question-title {
@@ -53,8 +60,14 @@
     margin-bottom: 20px;
   }
 
+  .question-author {
+    font-size: 16px;
+    color: gray;
+    margin-top: 20px;
+    text-decoration: underline;
+  }
+
   .question-body {
-    word-break:break-all;
     font-size: 18px;
   }
 

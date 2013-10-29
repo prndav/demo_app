@@ -28,19 +28,34 @@
   }
 
   .answer-body {
+    position: relative;
     padding: 5px 0;
     margin-bottom: 10px;
     border-bottom: 1px dotted gray;
 
     & > p {
-      margin-bottom: 30px;
+      margin-bottom: 20px;
       font-size: 16px;
       padding: 10px 0;
     }
 
     .comment-link {
+      margin-top: 10px;
+      font-size: 10px;
       display: block;
+      text-transform: uppercase;
+      width: 150px;
     }
+
+    .reply-link {
+      margin-top: 10px;
+      font-size: 10px;
+      display: block;
+      text-transform: uppercase;
+      width: 150px;
+    }
+
+
 
   }
 
@@ -49,7 +64,18 @@
   .answer-date {
     font-size: small;
     color: grey;
+    font-weight: bold;
   }
 
+}
+
+
+.hide-comments {
+  position: absolute;
+  top: -20px;
+  left: 600px;
+  font-size: small;
+  color: gray;
+  cursor: pointer;
 }
 

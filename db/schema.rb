@@ -11,16 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131027194628) do
+ActiveRecord::Schema.define(version: 20131028163926) do
 
   create_table "answers", force: true do |t|
     t.text     "body"
     t.integer  "question_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   add_index "answers", ["question_id"], name: "index_answers_on_question_id"
+  add_index "answers", ["user_id"], name: "index_answers_on_user_id"
 
   create_table "commentables", force: true do |t|
     t.integer  "comment_id"
@@ -38,16 +40,21 @@ ActiveRecord::Schema.define(version: 20131027194628) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "l_margin"
+    t.integer  "user_id"
   end
 
   add_index "comments", ["answer_id"], name: "index_comments_on_answer_id"
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id"
 
   create_table "questions", force: true do |t|
     t.string   "title"
     t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
+
+  add_index "questions", ["user_id"], name: "index_questions_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -62,6 +69,7 @@ ActiveRecord::Schema.define(version: 20131027194628) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "user_name"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

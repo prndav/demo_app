@@ -1,4 +1,7 @@
 class CommentsController < ApplicationController
+  before_filter :authenticate_user!
+  before_action :set_comment, only: [:new_comment, :new_reply]
+
   def create
     @answer = Answer.find(params[:comment][:answer_id])
     @comment = @answer.comments.build(comments_params)
@@ -14,7 +17,6 @@ class CommentsController < ApplicationController
 
   def new_comment
     @answer = Answer.find(params[:id])
-    @comment = Comment.new
 
     respond_to do |format|
       format.js
@@ -22,7 +24,6 @@ class CommentsController < ApplicationController
   end
 
   def new_reply
-    @comment = Comment.new
     @reply_to = Comment.find(params[:id])
     @answer = @reply_to.answer
 
@@ -50,6 +51,10 @@ class CommentsController < ApplicationController
   private
 
     def comments_params
-      params.require(:comment).permit(:body, :answer_id, :l_margin)
+      params.require(:comment).permit(:body, :answer_id, :l_margin, :user_id)
+    end
+
+    def set_comment
+      @comment = Comment.new
     end
 end

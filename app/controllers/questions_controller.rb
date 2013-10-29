@@ -1,4 +1,6 @@
 class QuestionsController < ApplicationController
+  before_filter :authenticate_user!
+
   def index
     @questions = Question.all.paginate(page: params[:page], per_page: 5)
     @question = Question.new
@@ -9,7 +11,7 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    @question = Question.new(question_params)
+    @question = current_user.questions.build(question_params)
 
     if @question.save
       flash[:success] = 'Your question was posted.'
@@ -29,7 +31,7 @@ class QuestionsController < ApplicationController
   private
 
     def question_params
-      params.require(:question).permit(:title, :body)
+      params.require(:question).permit(:title, :body, :user_id)
     end
 
 end
