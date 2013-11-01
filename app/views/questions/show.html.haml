@@ -15,7 +15,7 @@
         = render 'answers/answer_form'
 
       %div
-        - if has_answers?(@question)
+        - if @question.answers.any?
           .answers
             = render @question.answers
         - else

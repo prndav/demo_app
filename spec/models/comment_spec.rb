@@ -11,30 +11,18 @@ describe Comment do
   it { should respond_to(:body) }
   it { should respond_to(:user_id) }
   it { should respond_to(:answer_id) }
-  it { should respond_to(:answer) }
-  it { should respond_to(:replies) }
-  it { should respond_to(:user) }
+  it { should respond_to(:parent_id) }
   its(:user) { should eq user }
   its(:answer) { should eq answer }
+
   it { should be_valid }
 
-  describe 'with blank content' do
-    before { @comment.body = ' ' }
-    it { should_not be_valid }
-  end
+  it { should belong_to(:user) }
+  it { should belong_to(:answer) }
 
-  describe 'when user_id is not present' do
-    before { @comment.user_id = nil }
-    it { should_not be_valid }
-  end
+  it { should validate_presence_of(:body) }
+  it { should validate_presence_of(:user_id) }
+  it { should validate_presence_of(:answer_id) }
+  it { should ensure_length_of(:body).is_at_most(1000) }
 
-  describe 'when answer_id is not present' do
-    before { @comment.answer_id = nil }
-    it { should_not be_valid }
-  end
-
-  describe 'when content is too long' do
-    before { @comment.body = 'a' * 1001 }
-    it { should_not be_valid }
-  end
 end

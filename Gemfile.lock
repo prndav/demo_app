@@ -49,6 +49,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.3)
+    database_cleaner (1.2.0)
     devise (3.1.1)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
@@ -120,6 +121,8 @@ GEM
       method_source (~> 0.8)
       slop (~> 3.4)
     rack (1.5.2)
+    rack-mini-profiler (0.1.31)
+      rack (>= 1.1.3)
     rack-test (0.6.2)
       rack (>= 1.0)
     railroady (1.1.1)
@@ -178,6 +181,8 @@ GEM
       multi_json (~> 1.0)
       rubyzip (< 1.0.0)
       websocket (~> 1.0.4)
+    shoulda-matchers (2.3.0)
+      activesupport (>= 3.0.0)
     simple_form (3.0.0)
       actionpack (>= 4.0.0, < 4.1)
       activemodel (>= 4.0.0, < 4.1)
@@ -225,6 +230,7 @@ DEPENDENCIES
   capybara (= 2.1.0)
   childprocess (= 0.3.6)
   coffee-rails (~> 4.0.0)
+  database_cleaner (~> 1.2.0)
   devise
   factory_girl_rails (= 4.2.1)
   guard-rspec (= 2.5.0)
@@ -234,6 +240,7 @@ DEPENDENCIES
   jquery-rails
   mocha
   pg (= 0.15.1)
+  rack-mini-profiler
   railroady
   rails (= 4.0.0)
   rails_12factor (= 0.0.2)
@@ -241,6 +248,7 @@ DEPENDENCIES
   sass-rails (~> 4.0.0)
   sdoc
   selenium-webdriver (~> 2.35.1)
+  shoulda-matchers
   simple_form
   spork-rails (= 4.0.0)
   sqlite3

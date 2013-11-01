@@ -12,14 +12,12 @@
   <div class="navbar navbar-fixed-top navbar-inverse">
     <div class="navbar-inner">
       <ul class="nav pull-right">
-        <% unless current_user %>
-
-          <li><%= link_to 'Sign up', new_user_registration_path %></li>
-          <li><%= link_to 'Sign in', new_user_session_path %></li>
-        <% end %>
         <% if current_user %>
           <li><%= link_to 'Home', root_path %></li>
           <li><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></li>
+        <% else %>
+          <li><%= link_to 'Sign up', new_user_registration_path %></li>
+          <li><%= link_to 'Sign in', new_user_session_path %></li>
         <% end %>
       </ul>
     </div>
@@ -29,6 +27,7 @@
     <% end %>
 
     <%= yield %>
+    <%= debug(params) if Rails.env.development? %>
 </div>
 
 </body>

@@ -5,10 +5,15 @@ Demandi::Application.routes.draw do
     resources :answers
   end
 
-  resources :comments
-  match 'create_reply', to: 'comments#create_reply', via: 'post'
-  match 'new_comment',  to: 'comments#new_comment',  via: 'get'
-  match 'new_reply',  to: 'comments#new_reply',  via: 'get'
+  resources :answers, only: [:show] do
+    resources :comments
+  end
+
+  # resources :comments, only: [:show] do
+  #   member do
+  #     get 'reply'
+  #   end
+  # end
 
 
   # The priority is based upon order of creation: first created -> highest priority.

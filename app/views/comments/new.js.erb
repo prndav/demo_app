@@ -1,0 +1,4 @@
+comment_form = $('.comment-form').css('display', 'none')
+comment_form.append("<%= escape_javascript render partial: 'comments/comment_form', locals: { comment: @comment, answer: @answer, parent: @parent } %>")
+comment_form.slideDown('200');
+

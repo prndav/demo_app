@@ -1,13 +1,9 @@
 class QuestionsController < ApplicationController
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
 
   def index
-    @questions = Question.all.paginate(page: params[:page], per_page: 5)
+    @questions = Question.all.desc_order.paginate(page: params[:page], per_page: 5)
     @question = Question.new
-
-  end
-
-  def new
   end
 
   def create
@@ -17,13 +13,13 @@ class QuestionsController < ApplicationController
       flash[:success] = 'Your question was posted.'
       redirect_to @question
     else
-      @questions = Question.all.paginate(page: params[:page], per_page: 5)
+      @questions = Question.all.desc_order.paginate(page: params[:page], per_page: 5)
       render 'index'
     end
   end
 
   def show
-    @question = Question.find(params[:id])
+    @question = Question.includes(answers: [:comments]).find(params[:id])
     @answer = Answer.new
     @comment = Comment.new
   end

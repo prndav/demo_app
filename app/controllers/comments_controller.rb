@@ -1,60 +1,33 @@
 class CommentsController < ApplicationController
-  before_filter :authenticate_user!
-  before_action :set_comment, only: [:new_comment, :new_reply]
+  before_action :authenticate_user!, :set_answer
 
   def create
-    @answer = Answer.find(params[:comment][:answer_id])
+    @answer = Answer.find(params[:answer_id])
     @comment = @answer.comments.build(comments_params)
 
     if @comment.save
-      flash[:succes] = 'Your comment was submitted.'
+      flash[:succes] = 'Your comment was submitted'
       redirect_to :back
     else
-      render 'questions/show'
+      flash[:error] = 'Your comment was not submitted'
+      redirect_to :back
     end
 
   end
 
-  def new_comment
-    @answer = Answer.find(params[:id])
+  def new
+    @comment = Comment.new
+    @parent = Comment.find(params[:comment_id]) if params[:comment_id]
 
     respond_to do |format|
       format.js
-    end
-  end
-
-  def new_reply
-    @reply_to = Comment.find(params[:id])
-    @answer = @reply_to.answer
-
-    respond_to do |format|
-      format.js
-    end
-
-  end
-
-  def create_reply
-    @answer = Answer.find(params[:comment][:answer_id])
-    @comment = Comment.find(params[:comment][:reply_id])
-    @reply = @answer.comments.build(comments_params)
-
-
-    if @comment.save
-      @comment.replies << @reply
-      flash[:succes] = 'Your reply was submitted.'
-      redirect_to :back
-    else
-      render 'questions/show'
     end
   end
 
   private
 
     def comments_params
-      params.require(:comment).permit(:body, :answer_id, :l_margin, :user_id)
+      params.require(:comment).permit(:body, :answer_id, :l_margin, :user_id, :parent_id)
     end
 
-    def set_comment
-      @comment = Comment.new
-    end
 end

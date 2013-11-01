@@ -17,7 +17,6 @@ describe 'Questions' do
         lambda do
           visit root_path
           click_button('Create Question')
-          page.should have_selector('div#error_explanation')
         end.should_not change(Question, :count)
       end
     end
@@ -36,4 +35,5 @@ describe 'Questions' do
       end
     end
   end
+
 end

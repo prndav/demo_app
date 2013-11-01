@@ -9,7 +9,7 @@ ready = ->
 
 
   $('a.reply-link').on 'click', (e) ->
-    $(this).parent().append("<div class='reply-form' style='margin-top: 10px;'></div>")
+    $(this).parent().append("<div class='comment-form' style='margin-top: 10px;'></div>")
 
   $('.comments').hide()
 

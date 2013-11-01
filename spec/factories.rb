@@ -14,10 +14,8 @@ FactoryGirl.define do
     question.body 'lorem ipsum'
   end
 
-  factory :invalid_question do |invalid_question|
-    invalid_question.association :user
-    invalid_question.title ''
-    invalid_question.body ''
+  factory :invalid_question, parent: :question do |f|
+    f.title nil
   end
 
   factory :answer do |answer|

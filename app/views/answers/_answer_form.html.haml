@@ -2,7 +2,6 @@
 .full-question-info
   = pluralize(@question.answers.count, 'answer')
 = simple_form_for( [@question,@answer], html: { class: 'form-horizontal' } ) do |f|
-  = render 'shared/form_errors', object: f.object
   = f.hidden_field :user_id, value: current_user.id
   = f.input :body, input_html: { class: 'span5', rows: '5' }, label: false
   .control-group

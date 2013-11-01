@@ -1,15 +1,16 @@
 class AnswersController < ApplicationController
-  before_filter :authenticate_user!, only: [:create]
+  before_action :authenticate_user!, only: [:create]
+  before_action :set_question
 
   def create
-    @question = Question.find(params[:question_id])
     @answer = @question.answers.build(answer_params)
+    @question = Question.find(params[:question_id])
 
     if @answer.save
       flash[:succes] = 'Your answer has been submited.'
       redirect_to @question
     else
-      @question = Question.find(params[:question_id])
+      # @question = Question.find(params[:question_id])
       render 'questions/show'
     end
   end

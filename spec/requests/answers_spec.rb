@@ -18,7 +18,6 @@ describe 'Answers' do
         lambda do
           visit "/questions/#{@question.id}"
           click_button('Create Answer')
-          page.should have_selector('div#error_explanation')
         end.should_not change(Answer, :count)
       end
     end
@@ -35,4 +34,5 @@ describe 'Answers' do
       end
     end
   end
+
 end

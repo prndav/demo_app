@@ -1,25 +1,30 @@
 module CommentsHelper
-  def has_replies?(comment)
-    comment.replies.any?
-  end
 
-  def render_comments_for(answer, &blk)
-    answer.comments.each do |comment|
-      show_reply(comment, &blk) unless Commentable.find_by_reply_id(comment.id)
-    end
-  end
-
-  def show_reply(comment, &blk)
+  def show_reply(comments, comment, &blk)
     blk.call(comment)
 
-    if comment.replies.any?
-      comment.replies.each do |re|
-        show_reply(re, &blk)
+    if comments[comment.id]
+      comments[comment.id].each do |re|
+        show_reply(comments, re, &blk)
       end
     else
       return
     end
 
+  end
+
+  def get_comments_for(answer)
+    answer.comments.group_by {|c| c.parent_id }
+  end
+
+  def render_comments_for(answer, &blk)
+    comments = get_comments_for(answer)
+
+    unless comments.empty?
+      comments[0].each do |comment|
+        show_reply(comments, comment, &blk)
+      end
+    end
   end
 
 end

@@ -1,7 +1,6 @@
 %h1 Questions ?
 %hr
 = simple_form_for( @question, html: { class: 'form-horizontal' } ) do |f|
-  = render 'shared/form_errors', object: f.object
   = f.input :title, wrapper: :prepend, label: false do
     = content_tag :span, 'Title', class: 'add-on'
     = f.input_field :title
