@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 ruby '2.0.0'
-#TODO add annotate_models gem, shoulda matchers gem, rack-mini-profiler
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
@@ -59,7 +58,6 @@ group :development, :test do
   gem 'spork-rails', '4.0.0'
   gem 'guard-spork', '1.5.0'
   gem 'childprocess', '0.3.6'
-  gem 'mocha', :require => false
 end
 
 group :test do
