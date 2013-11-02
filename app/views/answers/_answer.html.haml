@@ -1,15 +1,22 @@
 .answer
   .answer-date
     = answer.created_at.to_formatted_s(:long)
+    by
+    %span.user-name
+      = answer.user.user_name
   .answer-body
-    %p
-      = answer.body
-      = link_to 'leave comment', new_answer_comment_path(answer), class: 'comment-link', remote: true
-      %span.hide-comments show_comments
-      .comments
-        - render_comments_for(answer) do |comment|
-          .comment{ style: "margin-left: #{comment.l_margin}px" }
-            %p.comment-content
-              = comment.body
-            = link_to 'reply', new_answer_comment_path(answer,comment_id: comment.id), class: 'reply-link', remote: true
+    %div
+      %p
+        = answer.body
+        = link_to 'leave comment', new_answer_comment_path(answer), class: 'comment-link', remote: true
+      - if answer.comments.any?
+        %span.hide-comments
+          %i.icon-chevron-down
+          comments
+        .comments
+          - render_comments_for(answer) do |comment|
+            .comment{ style: "margin-left: #{comment.l_margin}px" }
+              %p.comment-content
+                = comment.body
+              = link_to 'reply', new_answer_comment_path(answer,comment_id: comment.id), class: 'comment-link', remote: true
 

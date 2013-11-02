@@ -14,7 +14,7 @@ module CommentsHelper
   end
 
   def get_comments_for(answer)
-    answer.comments.group_by {|c| c.parent_id }
+    answer.comments.group_by(&:parent_id)
   end
 
   def render_comments_for(answer, &blk)

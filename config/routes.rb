@@ -9,12 +9,6 @@ Demandi::Application.routes.draw do
     resources :comments
   end
 
-  # resources :comments, only: [:show] do
-  #   member do
-  #     get 'reply'
-  #   end
-  # end
-
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

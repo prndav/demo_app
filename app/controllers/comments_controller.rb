@@ -2,7 +2,6 @@ class CommentsController < ApplicationController
   before_action :authenticate_user!, :set_answer
 
   def create
-    @answer = Answer.find(params[:answer_id])
     @comment = @answer.comments.build(comments_params)
 
     if @comment.save
@@ -28,6 +27,10 @@ class CommentsController < ApplicationController
 
     def comments_params
       params.require(:comment).permit(:body, :answer_id, :l_margin, :user_id, :parent_id)
+    end
+
+    def set_answer
+      @answer = Answer.find(params[:answer_id])
     end
 
 end

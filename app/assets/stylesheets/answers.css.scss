@@ -25,6 +25,7 @@
     border-left: 5px solid #4B696B;
     margin-bottom: 40px;
     padding-left: 20px;
+
   }
 
   .answer-body {
@@ -32,12 +33,7 @@
     padding: 5px 0;
     margin-bottom: 10px;
     border-bottom: 1px dotted gray;
-
-    & > p {
-      margin-bottom: 20px;
-      font-size: 16px;
-      padding: 10px 0;
-    }
+    font-size: 18px;
 
     .comment-link {
       margin-top: 10px;
@@ -47,12 +43,15 @@
       width: 150px;
     }
 
-    .reply-link {
+    .disabled {
+      cursor: default !important;
+      pointer-events: none;
       margin-top: 10px;
       font-size: 10px;
       display: block;
       text-transform: uppercase;
       width: 150px;
+      color: gray;
     }
 
 
@@ -77,5 +76,14 @@
   font-size: small;
   color: gray;
   cursor: pointer;
+  color: gray;
+
+  &:hover {
+    color: #0088CC;
+  }
+}
+
+.comment-form {
+  margin-top: 10px;
 }
 

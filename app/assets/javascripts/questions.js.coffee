@@ -5,21 +5,25 @@
 
 ready = ->
   $('a.comment-link').on 'click', (e) ->
-    $(this).parent().append("<div class='comment-form' style='margin-top: 10px;'></div>")
+    $('.comment-form').each ->
+      $(this).remove()
+    $('.disabled').removeClass('disabled').addClass('comment-link')
+    $(this).parent().append("<div class='comment-form'></div>")
+    $(this).removeClass('comment-link').addClass('disabled')
 
 
-  $('a.reply-link').on 'click', (e) ->
-    $(this).parent().append("<div class='comment-form' style='margin-top: 10px;'></div>")
-
-  $('.comments').hide()
-
+  # show/hide comments
   $('.hide-comments').on 'click', ->
-    $(this).parent().siblings('.comments').toggle()
+    $(this).siblings('.comments').slideToggle()
+    $(this).children('i').toggleClass('icon-chevron-right icon-chevron-down')
 
+
+  # comment background
   $('.comment').on 'mouseover', ->
-    $(this).css('background-color', '#F7F7F2')
+    $(this).addClass('highlight')
   $('.comment').on 'mouseout', ->
-    $(this).css('background-color', '#FFF')
+    $(this).removeClass('highlight')
+
 
 
 $(document).ready(ready)
