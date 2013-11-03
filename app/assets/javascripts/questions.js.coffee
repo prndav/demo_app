@@ -11,6 +11,14 @@ ready = ->
     $(this).parent().append("<div class='comment-form'></div>")
     $(this).removeClass('comment-link').addClass('disabled')
 
+  $('.answer-body').on 'click', (e) ->
+    discard = $('.discard')[0]
+
+    if e.target == discard
+      $(e.target).parents('.comment-form').remove()
+      $('.disabled').removeClass('disabled').addClass('comment-link')
+
+
 
   # show/hide comments
   $('.hide-comments').on 'click', ->
