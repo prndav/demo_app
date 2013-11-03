@@ -11,6 +11,7 @@ ready = ->
     $(this).parent().append("<div class='comment-form'></div>")
     $(this).removeClass('comment-link').addClass('disabled')
 
+  # add discard option to comment/reply form
   $('.answer-body').on 'click', (e) ->
     discard = $('.discard')[0]
 
