@@ -2,7 +2,7 @@
   .question-title
     = link_to truncate(question.title, length: 100), question
   .question-info
-    = pluralize(question.answers.count, 'answer')
+    = pluralize(question.answers.length, 'answer')
   .question-body
     = truncate(question.body, length: 30)
   .question-date

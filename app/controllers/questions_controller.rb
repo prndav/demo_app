@@ -2,7 +2,7 @@ class QuestionsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @questions = Question.all.desc_order.paginate(page: params[:page], per_page: 5)
+    @questions = Question.includes(:user, :answers).desc_order.paginate(page: params[:page], per_page: 5)
     @question = Question.new
   end
 
