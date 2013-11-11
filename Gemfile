@@ -10,6 +10,9 @@ gem 'devise'
 gem 'will_paginate', '3.0.4'
 gem 'bootstrap-will_paginate', '0.0.9'
 gem 'rack-mini-profiler'
+gem 'rails-observers'
+gem 'actionpack-action_caching'
+gem 'actionpack-page_caching'
 
 # Use sqlite3 as the database for Active Record
 group :development do
